@@ -1,7 +1,7 @@
 # Eden-Engine
 
 ### Output:
-```batch
+```javascript
 O HP do Champion 2 é: 800
 Champion 1 hit Champion 2 com 120 de ad
 Champion 2 tem 76 de armor
@@ -14,7 +14,7 @@ Champion 2 hp após o hit: 725.6
 # Start
 O objeto abaixo foi refatorado por conter muitos parametros ->
 
-```batch
+```javascript
 function Champion(hp, armor, ad) {
   this.hp = hp || 0;
   this.armor = armor || 0;
@@ -25,7 +25,7 @@ var champion1 = new Champion(620, 76, 120);
 var champion2 = new Champion(800, 76, 120);
 ```
 para:
-```batch
+```javascript
 function Champion(params) {
   this.hp = params.hp || 0;
   this.armor = params.armor || 0;
@@ -56,7 +56,7 @@ var champion1 = new Champion({
 ```
 -----------------------------
 
-```batch
+```javascript
 function armorEfficiency(armor) {
   let efficiency;
 
@@ -83,7 +83,7 @@ Essa função armorEfficiency recebe um parâmetro armor que representa o valor 
 # Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
 
 
-```batch
+```javascript
 function actionHit(origin, target) {
   var originAd = origin.ad;
   console.log(`Champion 1 hit Champion 2 com ${originAd} de ad`);
@@ -119,7 +119,7 @@ A linha console.log(${target.hp} - ${dmgWithReduction}); exibe no console a expr
 
 A linha target.hp -= dmgWithReduction; subtrai o valor do dano reduzido dos pontos de vida do campeão alvo, atualizando o valor dos pontos de vida.
 
-```batch
+```javascript
 actionHit(champion1, champion2);
 ```
 Essa linha chama a função actionHit com os objetos de campeões champion1 como campeão de origem e champion2 como campeão alvo. Isso simula um ataque do champion1 ao champion2.
