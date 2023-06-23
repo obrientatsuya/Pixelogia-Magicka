@@ -11,7 +11,8 @@ Eficiência da armadura: 0.38
 Champion 2 hp após o hit: 725.6
 ```
 
-### Start
+# Start
+O objeto abaixo foi refatorado por conter muitos parametros ->
 
 ```batch
 function Champion(hp, armor, ad) {
@@ -23,7 +24,37 @@ function Champion(hp, armor, ad) {
 var champion1 = new Champion(620, 76, 120);
 var champion2 = new Champion(800, 76, 120);
 ```
-Essas linhas definem uma função construtora Champion que cria objetos de personagem. A função recebe três parâmetros: hp (pontos de vida), armor (armadura) e ad (dano de ataque). Os atributos hp, armor e ad do objeto são inicializados com os valores fornecidos. Se algum dos valores não for fornecido, eles serão definidos como zero. Em seguida, são criados dois objetos de personagem: champion1 e champion2, com atributos específicos.
+para:
+```batch
+function Champion(params) {
+  this.hp = params.hp || 0;
+  this.armor = params.armor || 0;
+  this.ad = params.ad || 0;
+  this.mr = params.mr || 0;
+  this.exp = params.exp || 0;
+  this.nivel = params.nivel || 0;
+  this.hpregen = {
+    value: params.hpregen || 0,
+    start: params.start || 0,
+    end: params.end || 0
+  };
+  this.maxhp = params.maxhp || 0;
+}
+
+var champion1 = new Champion({
+  hp: 620,
+  armor: 76,
+  ad: 120,
+  mr: 76,
+  exp: 0,
+  nivel: 0,
+  hpregen: 0,
+  maxhp: 800,
+  start: 5.5,
+  end: 14.85
+});
+```
+-----------------------------
 
 ```batch
 function armorEfficiency(armor) {
@@ -48,6 +79,9 @@ function armorEfficiency(armor) {
 }
 ```
 Essa função armorEfficiency recebe um parâmetro armor que representa o valor da armadura. Ela calcula a eficiência da armadura com base nesse valor. Se armor for menor ou igual a 100, a eficiência é calculada como metade do valor da armadura. Caso contrário, a eficiência é calculada como metade de 100 adicionado ao valor da armadura dividido por 33.33. A eficiência é então verificada para garantir que esteja dentro dos limites de 90 e -20. O valor da eficiência é armazenado em efficiencyPercentage como uma porcentagem dividida por 100. A eficiência é exibida no console e também retornada pela função.
+
+# Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
+
 
 ```batch
 function actionHit(origin, target) {
