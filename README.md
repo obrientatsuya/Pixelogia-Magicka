@@ -55,7 +55,6 @@ var champion1 = new Champion({
 });
 ```
 -----------------------------
-
 ```javascript
 function armorEfficiency(armor) {
   let efficiency;
@@ -78,10 +77,9 @@ function armorEfficiency(armor) {
   return efficiencyPercentage;
 }
 ```
-Essa função armorEfficiency recebe um parâmetro armor que representa o valor da armadura. Ela calcula a eficiência da armadura com base nesse valor. Se armor for menor ou igual a 100, a eficiência é calculada como metade do valor da armadura. Caso contrário, a eficiência é calculada como metade de 100 adicionado ao valor da armadura dividido por 33.33. A eficiência é então verificada para garantir que esteja dentro dos limites de 90 e -20. O valor da eficiência é armazenado em efficiencyPercentage como uma porcentagem dividida por 100. A eficiência é exibida no console e também retornada pela função.
+A função `armorEfficiency` recebe um valor de `armor` e calcula a eficiência da armadura com base nesse valor. Se o valor de `armor` for menor ou igual a 100, a eficiência é calculada como `armor / 2`. Caso contrário, a eficiência é calculada somando 100/2 com `armor / 33.33`. Em seguida, há verificações para limitar a eficiência dentro de um intervalo de -20 a 90. O resultado é dividido por 100 para obter a eficiência em forma de porcentagem e é exibido no console. Por fim, o valor da eficiência é retornado.
 
 # Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
-
 
 ```javascript
 function actionHit(origin, target) {
@@ -103,25 +101,57 @@ function actionHit(origin, target) {
   console.log(`Champion 2 hp após o hit: ${target.hp}`);
 }
 ```
-Essa função actionHit recebe dois parâmetros: origin e target, que são objetos de personagem. A função calcula o dano causado pelo campeão de origem (origin) ao campeão alvo (target).
+A função `actionHit` recebe dois parâmetros: `origin` e `target`, que representam os campeões envolvidos na ação de ataque. A função realiza o cálculo de dano com base nos atributos dos campeões e exibe informações relevantes no console.
 
-A linha var originAd = origin.ad; armazena o valor do atributo ad do campeão de origem em uma variável chamada originAd.
+- `originAd` armazena o valor do atributo `ad` do campeão de origem.
+- É exibida no console uma mensagem inform
 
-Em seguida, são exibidas mensagens no console para informar qual campeão está atacando e qual a quantidade de dano de ataque que está sendo usada.
-
-A linha var targetArmorEfficiency = armorEfficiency(target.armor); chama a função armorEfficiency para calcular a eficiência da armadura do campeão alvo. O valor da armadura do campeão alvo é passado como argumento para a função.
-
-A linha var dmgWithReduction = +(originAd - (originAd * targetArmorEfficiency)).toFixed(2); calcula o dano com base no valor de ataque do campeão de origem e na eficiência da armadura do campeão alvo. O valor é subtraído do valor original de ataque (originAd) multiplicado pela eficiência da armadura (targetArmorEfficiency). O método toFixed(2) é aplicado para limitar o resultado a duas casas decimais e o operador + é usado para converter o resultado de volta em um número.
-
-A próxima linha exibe a expressão completa da fórmula de cálculo de dano no console, mostrando os valores de originAd, originAd * targetArmorEfficiency e dmgWithReduction.
-
-A linha console.log(${target.hp} - ${dmgWithReduction}); exibe no console a expressão que representa a subtração do valor de dano do alvo dos pontos de vida atuais do campeão alvo.
-
-A linha target.hp -= dmgWithReduction; subtrai o valor do dano reduzido dos pontos de vida do campeão alvo, atualizando o valor dos pontos de vida.
+ando o campeão de origem e seu valor de `ad`.
+- É exibida no console a quantidade de armadura (`armor`) do `target` (campeão alvo).
+- `targetArmorEfficiency` recebe o valor da eficiência da armadura do `target`, obtido chamando a função `armorEfficiency` passando o valor de `armor` do `target` como argumento.
+- `dmgWithReduction` calcula o dano reduzido aplicando a eficiência da armadura ao `originAd`. O resultado é arredondado para 2 casas decimais.
+- São exibidas no console as etapas do cálculo de dano.
+- O valor do dano reduzido é subtraído do atributo `hp` do `target`.
+- É exibido no console o valor atualizado do atributo `hp` do `target`.
 
 ```javascript
 actionHit(champion1, champion2);
 ```
-Essa linha chama a função actionHit com os objetos de campeões champion1 como campeão de origem e champion2 como campeão alvo. Isso simula um ataque do champion1 ao champion2.
+Chama a função `actionHit` passando `champion1` como origem e `champion2` como alvo, simulando um ataque do `champion1` ao `champion2`.
 
 # Veja também: [Experience and Hp Regen](https://github.com/obrientatsuya/Eden-Engine/blob/main/experience.js)
+### Output:
+```javascript
+Novo XP: 180
+HP Regen Atual: 5.5
+Nível: 1
+HP increased from 620 to 625.5
+
+Novo XP: 360
+HP Regen Atual: 6.05
+Nível: 2
+HP increased from 625.5 to 631.55
+
+Novo XP: 540
+HP Regen Atual: 6.05
+Nível: 2
+HP increased from 631.55 to 637.6
+
+Novo XP: 720
+HP Regen Atual: 6.6
+Nível: 3
+HP increased from 637.6 to 644.2
+
+Novo XP: 900
+HP Regen Atual: 6.6
+
+...
+Novo XP: 18180  
+HP Regen Atual: 14.3
+Nível: 17
+HP is already at maximum (800). No further healing.
+
+Novo XP: 18360
+HP Regen Atual: 14.85
+Nível: 18
+O campeão atingiu o nível máximo.
