@@ -119,7 +119,7 @@ actionHit(champion1, champion2);
 ```
 Chama a função `actionHit` passando `champion1` como origem e `champion2` como alvo, simulando um ataque do `champion1` ao `champion2`.
 
-# Veja também: [Experience and Hp Regen](https://github.com/obrientatsuya/Eden-Engine/blob/main/experience.md))
+# Veja também: [Experience and Hp Regen](https://github.com/obrientatsuya/Eden-Engine/blob/main/experience.md)
 ### Output:
 ```javascript
 Novo XP: 180
