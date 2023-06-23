@@ -123,3 +123,5 @@ A linha target.hp -= dmgWithReduction; subtrai o valor do dano reduzido dos pont
 actionHit(champion1, champion2);
 ```
 Essa linha chama a função actionHit com os objetos de campeões champion1 como campeão de origem e champion2 como campeão alvo. Isso simula um ataque do champion1 ao champion2.
+
+# Veja também: [Exp Mechanic](https://github.com/obrientatsuya/Eden-Engine/blob/main/experience.js)
