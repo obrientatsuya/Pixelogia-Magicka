@@ -16,11 +16,3 @@ console.log("Eficiência da resistência mágica:", mrEfficiency(150)); // Resul
 console.log("Eficiência da resistência mágica:", mrEfficiency(250)); // Resultado: Eficiência da resistência mágica: 60.00%
 ```
 
-Os resultados mostram a eficiência da resistência mágica como uma porcentagem dentro das limitações especificadas no código.
-
-```batch
-Eficiência da resistência mágica: 25.33%
-Eficiência da resistência mágica: 33.33%
-Eficiência da resistência mágica: 58.18%
-Eficiência da resistência mágica: 60.00%
-```
