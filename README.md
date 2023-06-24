@@ -110,9 +110,10 @@ function Champion(params) {
 41-44. Dentro da categoria `niveling` (ou scaling), são definidos os atributos relacionados ao nível e experiência do campeão. Esses atributos incluem `exp` (experiência) e `nvl` (nível). Ambos os atributos são inicializados com um valor fornecido em `params`, caso exista, caso contrário, o valor padrão é 0.
 # Skills Stats
 47. A propriedade `skills` é criada dentro do objeto `this`. Essa propriedade contém informações sobre as habilidades do campeão.
-
 49-54. Dentro da habilidade `skill1`, são definidos os atributos relacionados à primeira habilidade do campeão. Esses atributos incluem `name` (nome da habilidade), `attributes` (atributos da habilidade, como área de efeito, custo e tempo de recarga) e `niveling` (atributos de nivelamento da habilidade). Cada atributo é inicializado com um valor fornecido em `params`, caso exista, caso contrário, o valor padrão é uma string vazia ou um objeto vazio.
 -----------------------------
+
+# Armor Efficiency
 ```javascript
 function armorEfficiency(armor) {
   let efficiency;
@@ -139,6 +140,7 @@ A função `armorEfficiency` recebe um valor de `armor` e calcula a eficiência 
 
 # Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
 
+# Função responsável pelo hit basico.
 ```javascript
 function actionHit(origin, target) {
   var originAd = origin.ad;
