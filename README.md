@@ -43,6 +43,7 @@ var champion1 = new Champion({
   end: 14.85
 });
 ```
+# para ->
 ```javascript
 function Champion(params) {
   this.baseStats = {
