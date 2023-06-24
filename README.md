@@ -97,7 +97,7 @@ function Champion(params) {
 ```
 
 
-1. A função `Champion` é definida e recebe um parâmetro chamado `params`. Essa função é provavelmente usada para criar instâncias de campeões em um jogo.
+1. A função `Champion` é definida e recebe um parâmetro chamado `params`. Essa função é usada para criar instâncias de campeões em um jogo.
 
 3. A propriedade `baseStats` é criada dentro do objeto `this`. Essa propriedade contém estatísticas básicas do campeão, divididas em categorias ofensivas, defensivas, mágicas e de nivelamento.
 # Ofensive
