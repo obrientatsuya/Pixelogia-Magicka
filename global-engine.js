@@ -1,52 +1,80 @@
-function Champion(hp, armor, ad) {
-  this.hp = hp || 0;
-  this.armor = armor || 0;
-  this.ad = ad || 0;
-}
+const Champion = require('./championGen');
+const actionHit = require('./actionHit');
+const { exp, addRegen, addExperience } = require('./experience');
 
-var champion1 = new Champion(620, 76, 120);
-var champion2 = new Champion(800, 76, 120);
+var champion1 = new Champion({
+  armorPen: 10,
+  ad: 120,
+  atqSpeed: 1.5,
+  criticalStrike: 0.2,
+  criticalDamage: 2.5,
+  lifesteal: 0.1,
+  armor: 100,
+  hp: 2000,
+  hpregen: 50,
+  hpregenStart: 5.5,
+  hpregenEnd: 14.85,
+  mr: 80,
+  ap: 150,
+  cdr: 0.2,
+  mrPen: 15,
+  mana: 1000,
+  manaregen: 20,
+  manaregenStart: 3.5,
+  manaregenEnd: 8.2,
+  magicVamp: 0.1,
+  maxhp: 2100,
+  exp: 0,
+  nvl: 1,
+  skill1Name: 'Fireball',
+  skill1Area: 0,
+  skill1Cost: 0,
+  skill1Cooldown: 0, 
+  skill1Niveling: {
+    exp: 0,
+    nvl: 1
+  },
+});
 
-function armorEfficiency(armor) {
-  let efficiency;
+var champion2 = new Champion({
+  armorPen: 10,
+  ad: 120,
+  atqSpeed: 1.5,
+  criticalStrike: 0.2,
+  criticalDamage: 2.5,
+  lifesteal: 0.1,
+  armor: 100,
+  hp: 2000,
+  hpregen: 50,
+  hpregenStart: 5.5,
+  hpregenEnd: 14.85,
+  mr: 80,
+  ap: 150,
+  cdr: 0.2,
+  mrPen: 15,
+  mana: 1000,
+  manaregen: 20,
+  manaregenStart: 3.5,
+  manaregenEnd: 8.2,
+  magicVamp: 0.1,
+  maxhp: 2100,
+  exp: 0,
+  nvl: 1,
+  skill1Name: 'Fireball',
+  skill1Area: 0,
+  skill1Cost: 0,
+  skill1Cooldown: 0, 
+  skill1Niveling: {
+    exp: 0,
+    nvl: 1
+  },
+});
 
-  if (armor <= 100) {
-    efficiency = armor / 2;
-  } else {
-    efficiency = 100 / 2;
-    efficiency += armor / 33.33;
-  }
+console.log(`O HP do Champion 1 é: ${champion1.baseStats.defensive.hp}`);
 
-  if (efficiency >= 90) {
-    efficiency = 90;
-  } else if (efficiency <= -20) {
-    efficiency = -20;
-  }
 
-  var efficiencyPercentage = efficiency / 100;
-  console.log("Eficiência da armadura:", efficiencyPercentage);
-  return efficiencyPercentage;
-}
-
-console.log(`O HP do Champion 2 é: ${champion2.hp}`);
-
-function actionHit(origin, target) {
-  var originAd = origin.ad;
-  console.log(`Champion 1 hit Champion 2 com ${originAd} de ad`);
-
-  console.log(`Champion 2 tem ${champion2.armor} de armor`);
-
-  var targetArmorEfficiency = armorEfficiency(target.armor);
-
-  var dmgWithReduction = +(originAd - (originAd * targetArmorEfficiency)).toFixed(2);
-
-  console.log(`${originAd} - (${originAd} * ${targetArmorEfficiency}) = ${dmgWithReduction}`);
-
-  console.log(`${target.hp} - ${dmgWithReduction}`);
-
-  target.hp -= dmgWithReduction;
-
-  console.log(`Champion 2 hp após o hit: ${target.hp}`);
-}
 
 actionHit(champion1, champion2);
+addRegen(champion2)
+
+
