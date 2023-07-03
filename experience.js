@@ -1,100 +1,4 @@
-function Champion(params) {
-  this.baseStats = {
-    
-
-    offensive: {
-      armorPen: params.armorPen || 0,
-      ad: params.ad || 0,
-      atqSpeed: params.atqSpeed || 0,
-      criticalStrike: params.criticalStrike || 0,
-      criticalDamage: params.criticalDamage || 0,
-      lifesteal: params.lifesteal || 0
-    },
-
-
-    defensive: {
-      armor: params.armor || 0,
-      hp: params.hp || 0,
-      hpregen: {
-        value: params.hpregen || 0,
-        start: params.hpregenStart || 0,
-        end: params.hpregenEnd || 0
-      },
-      mr: params.mr || 0,
-      maxhp: params.maxhp || 0
-    },
-
-
-    magic: {
-      ap: params.ap || 0,
-      cdr: params.cdr || 0,
-      mrPen: params.mrPen || 0,
-      mana: params.mana || 0,
-      manaregen: {
-        value: params.manaregen || 0,
-        start: params.manaregenStart || 0,
-        end: params.manaregenEnd || 0
-      },
-      magicVamp: params.magicVamp || 0
-    },
-
-
-    niveling: {
-      exp: params.exp || 0,
-      nvl: params.nvl || 0
-    }
-  };
-
-
-    this.skills = {
-    skill1: {
-      name: params.skill1Name || '',
-      attributes: {
-        area: params.skill1Area || '',
-        cost: params.skill1Cost || '',
-        cooldown: params.skill1Cooldown || ''
-      },
-      niveling: params.skill1Niveling || {}
-    },
-  };
-}
-
-
-var champion1 = new Champion({
-  armorPen: 10,
-  ad: 120,
-  atqSpeed: 1.5,
-  criticalStrike: 0.2,
-  criticalDamage: 2.5,
-  lifesteal: 0.1,
-  armor: 100,
-  hp: 2000,
-  hpregen: 50,
-  hpregenStart: 5.5,
-  hpregenEnd: 14.85,
-  mr: 80,
-  ap: 150,
-  cdr: 0.2,
-  mrPen: 15,
-  mana: 1000,
-  manaregen: 20,
-  manaregenStart: 3.5,
-  manaregenEnd: 8.2,
-  magicVamp: 0.1,
-  maxhp: 2100,
-  exp: 0,
-  nvl: 1,
-  skill1Name: 'Fireball',
-  skill1Area: 0,
-  skill1Cost: 0,
-  skill1Cooldown: 0, 
-  skill1Niveling: {
-    exp: 0,
-    nvl: 1
-  },
-});
-
-function exp(champion) {
+function exp(champion) {
   if (champion.baseStats.niveling.exp === 0) {
     champion.baseStats.niveling.nvl = 1;
   } else {
@@ -149,5 +53,8 @@ function addExperience(champion) {
   }, 5000);
 }
 
-addExperience(champion1);
-addRegen(champion1);
+module.exports = {
+  exp: exp,
+  addExperience: addExperience,
+  addRegen: addRegen
+  };
