@@ -11,11 +11,6 @@ function Champion(params) {
     defensive: {
       armor: params.armor || 0,
       hp: params.hp || 0,
-      hpregen: {
-        value: params.hpregen || 0,
-        start: params.hpregenStart || 0,
-        end: params.hpregenEnd || 0
-      },
       mr: params.mr || 0,
       maxhp: params.maxhp || 0
     },
@@ -24,16 +19,51 @@ function Champion(params) {
       cdr: params.cdr || 0,
       mrPen: params.mrPen || 0,
       mana: params.mana || 0,
+      magicVamp: params.magicVamp || 0
+    },
+    niveling: {
+      exp: params.exp || 0,
+      nvl: params.nvl || 0,
+      hpregen: {
+        value: params.hpregen || 0,
+        start: params.hpregenStart || 0,
+        end: params.hpregenEnd || 0
+      },
       manaregen: {
         value: params.manaregen || 0,
         start: params.manaregenStart || 0,
         end: params.manaregenEnd || 0
       },
-      magicVamp: params.magicVamp || 0
-    },
-    niveling: {
-      exp: params.exp || 0,
-      nvl: params.nvl || 0
+      armorNvl: {
+        value: params.armorNvl || 0,
+        start: params.armorNvlStart || 0,
+        end: params.armorNvlEnd || 0
+      },
+      mrNvl: {
+        value: params.mrNvl || 0,
+        start: params.mrNvlStart || 0,
+        end: params.mrNvlEnd || 0
+      },
+      atksNvl: {
+        value: params.atksNvl || 0,
+        start: params.atksNvlStart || 0,
+        end: params.atksNvlEnd || 0
+      },
+      msNvl: {
+        value: params.msNvl || 0,
+        start: params.msNvlStart || 0,
+        end: params.msNvlEnd || 0
+      },
+      apNvl: {
+        value: params.apNvl || 0,
+        start: params.apNvlStart || 0,
+        end: params.apNvlEnd || 0
+      },
+      adNvl: {
+        value: params.adNvl || 0,
+        start: params.adNvlStart || 0,
+        end: params.adNvlEnd || 0
+      }
     }
   };
 
@@ -49,4 +79,5 @@ function Champion(params) {
     },
   };
 }
+
 module.exports = Champion;
