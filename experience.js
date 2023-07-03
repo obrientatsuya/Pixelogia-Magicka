@@ -1,4 +1,4 @@
-function exp(champion) {
+function exp(champion) {
   if (champion.baseStats.niveling.exp === 0) {
     champion.baseStats.niveling.nvl = 1;
   } else {
@@ -8,10 +8,13 @@
     while (nivel <= 18 && champion.baseStats.niveling.exp >= xpReqs[nivel]) {
       nivel++;
     }
-
-    champion.baseStats.niveling.nvl = nivel;
-    champion.baseStats.defensive.hpregen.value = calculateHpregen(nivel, champion.baseStats.defensive.hpregen); // Atualiza o valor do hpregen no objeto champion
-    console.log(`HP Regen Atual: ${champion.baseStats.defensive.hpregen.value}`);
+   if (nivel > champion.baseStats.niveling.nvl) { // Verifica se o nível aumentou
+      champion.baseStats.niveling.nvl = nivel;
+      updateStatsByLevel(champion); // Atualiza os atributos quando o nível muda
+    }
+  
+   champion.baseStats.niveling.hpregen.value = calculateHpregen(nivel, champion.baseStats.niveling.hpregen); // Atualiza o valor do hpregen no objeto champion
+      
   }
 
   return champion.baseStats.niveling.nvl;
@@ -28,7 +31,11 @@ function addRegen(champion) {
   setInterval(function() {
     const previousHp = champion.baseStats.defensive.hp;
     if (champion.baseStats.defensive.hp < champion.baseStats.defensive.maxhp) {
-      champion.baseStats.defensive.hp += champion.baseStats.defensive.hpregen.value;
+      const nivelAtual = exp(champion); // Obtém o nível atual
+      const hpregenAtual = calculateHpregen(nivelAtual, champion.baseStats.niveling.hpregen); // Calcula o hpregen atual
+
+      champion.baseStats.niveling.hpregen.value = hpregenAtual; // Atualiza o valor de hpregen no objeto champion
+      champion.baseStats.defensive.hp += champion.baseStats.niveling.hpregen.value;
       champion.baseStats.defensive.hp = Math.min(champion.baseStats.defensive.hp, champion.baseStats.defensive.maxhp);
       champion.baseStats.defensive.hp = parseFloat(champion.baseStats.defensive.hp.toFixed(2));
       console.log(`HP increased from ${previousHp} to ${champion.baseStats.defensive.hp}`);
@@ -53,8 +60,39 @@ function addExperience(champion) {
   }, 5000);
 }
 
+function calculateStatByLevel(level, start, end) {
+  const maxLevel = 18;
+  const increment = (end - start) / (maxLevel - 1);
+  const statValue = start + increment * (level - 1);
+  return parseFloat(statValue.toFixed(2));
+}
+
+function updateStatsByLevel(champion) {
+  const level = champion.baseStats.niveling.nvl;
+
+  champion.baseStats.niveling.adNvl.value = calculateStatByLevel(level, champion.baseStats.niveling.adNvl.start, champion.baseStats.niveling.adNvl.end);
+  
+  champion.baseStats.niveling.armorNvl.value = calculateStatByLevel(level, champion.baseStats.niveling.armorNvl.start, champion.baseStats.niveling.armorNvl.end);
+  
+  champion.baseStats.niveling.mrNvl.value = calculateStatByLevel(level, champion.baseStats.niveling.mrNvl.start, champion.baseStats.niveling.mrNvl.end);
+
+
+  champion.baseStats.offensive.ad += champion.baseStats.niveling.adNvl.value;
+  champion.baseStats.defensive.armor += champion.baseStats.niveling.armorNvl.value;
+  champion.baseStats.defensive.mr += champion.baseStats.niveling.mrNvl.value;
+  
+ console.log(`Champion updated stats at level ${level}:`);
+  console.log(`Armor: ${champion.baseStats.defensive.armor}`);
+  console.log(`MR: ${champion.baseStats.defensive.mr}`);
+console.log(`AD: ${champion.baseStats.offensive.ad}`);
+console.log(`HP Regen Atual: ${champion.baseStats.niveling.hpregen.value}`);
+}
+
+
+
+
 module.exports = {
   exp: exp,
   addExperience: addExperience,
   addRegen: addRegen
-  };
+};
