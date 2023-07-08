@@ -1,10 +1,12 @@
- const Champion = require('./championGen');
+const Champion = require('./championGen');
 const actionHit = require('./actionHit');
 const { exp, addRegen, addExperience } = require('./experience');
+const criticalStrike = require('./criticalStrike');
 
 const champion1 = new Champion({
   ad: 100,
   hp: 1000,
+  criticalStrike: 1,
   armor: 50,
   maxhp: 1000,
   hpregenStart: 5,
