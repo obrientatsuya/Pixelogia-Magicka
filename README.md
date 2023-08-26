@@ -215,3 +215,126 @@ Novo XP: 18360
 HP Regen Atual: 14.85
 Nível: 18
 O campeão atingiu o nível máximo.
+```
+
+# New shop feature
+
+### Input:
+```javascript
+shop(champion1, 1)
+shop(champion1, 2);
+shop(champion1, 3)
+shop(champion1, 1)
+shop(champion1, 2);
+shop(champion1, 3)
+shop(champion1, 4)
+sell(champion1, 1)
+```
+
+### Output:
+
+```javascript
+...
+Item "Bota" comprado com sucesso. Ouro restante: 900
+Preço original do item: 100
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: { id: 1, name: 'Bota', price: 100, recipe: null, sellPrice: 50 },
+  slot2: '',
+  slot3: '',
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Armor" comprado com sucesso. Ouro restante: 800
+Preço original do item: 100
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: { id: 1, name: 'Bota', price: 100, recipe: null, sellPrice: 50 },
+  slot2: { id: 2, name: 'Armor', price: 100, recipe: null, sellPrice: 50 },
+  slot3: '',
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Tabi" comprado com sucesso. Ouro restante: 700
+Preço original do item: 300
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: '',
+  slot2: '',
+  slot3: { id: 3, name: 'Tabi', price: 300, recipe: [ 1, 2 ], sellPrice: 150 },
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Bota" comprado com sucesso. Ouro restante: 600
+Preço original do item: 100
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: { id: 1, name: 'Bota', price: 100, recipe: null, sellPrice: 50 },
+  slot2: '',
+  slot3: { id: 3, name: 'Tabi', price: 300, recipe: [ 1, 2 ], sellPrice: 150 },
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Armor" comprado com sucesso. Ouro restante: 500
+Preço original do item: 100
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: { id: 1, name: 'Bota', price: 100, recipe: null, sellPrice: 50 },
+  slot2: { id: 2, name: 'Armor', price: 100, recipe: null, sellPrice: 50 },
+  slot3: { id: 3, name: 'Tabi', price: 300, recipe: [ 1, 2 ], sellPrice: 150 },
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Tabi" comprado com sucesso. Ouro restante: 400
+Preço original do item: 300
+Preço atualizado do item: 100
+Slots atualizados do inventário:
+{
+  slot1: '',
+  slot2: '',
+  slot3: { id: 3, name: 'Tabi', price: 300, recipe: [ 1, 2 ], sellPrice: 150 },
+  slot4: { id: 3, name: 'Tabi', price: 300, recipe: [ 1, 2 ], sellPrice: 150 },
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Super Tabi" comprado com sucesso. Ouro restante: 400
+Preço original do item: 600
+Preço atualizado do item: 0
+Slots atualizados do inventário:
+{
+  slot1: {
+    id: 4,
+    name: 'Super Tabi',
+    price: 600,
+    recipe: [ 3, 3 ],
+    sellPrice: 300
+  },
+  slot2: '',
+  slot3: '',
+  slot4: '',
+  slot5: '',
+  slot6: ''
+}
+...
+Item "Super Tabi" vendido com sucesso por 300 de ouro.
+Ouro atual do campeão: 700
+Slots atualizados do inventário:
+{ slot1: '', slot2: '', slot3: '', slot4: '', slot5: '', slot6: '' }
+...
+```
