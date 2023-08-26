@@ -140,39 +140,37 @@ A função `armorEfficiency` recebe um valor de `armor` e calcula a eficiência 
 
 # Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
 
-# Função responsável pelo hit basico.
+# Função responsável pelo hit basico. [Atualizada]
 ```javascript
 function actionHit(origin, target) {
-  var originAd = origin.ad;
-  console.log(`Champion 1 hit Champion 2 com ${originAd} de ad`);
+  var critDmg = criticalStrike(origin);
+  var targetArmorEfficiency = armorEfficiency(target.baseStats.defensive.armor);
+  
+  if (critDmg > 0) {
+    console.log('Acerto Crítico!');
+    console.log(`Champion 1 hit Champion 2 com ${critDmg} de dano crítico`);
+    console.log(`Champion 2 tem ${target.baseStats.defensive.armor} de armor`);
+    
+    var dmgWithReduction = critDmg - (critDmg * targetArmorEfficiency).toFixed(2);
+    
+    console.log(`Dano Total: ${dmgWithReduction}`);
+    target.baseStats.defensive.hp -= dmgWithReduction;
+    console.log(`Champion 2 hp após o hit: ${target.baseStats.defensive.hp}`)
 
-  console.log(`Champion 2 tem ${champion2.armor} de armor`);
+  } else {
+    var originAd = origin.baseStats.offensive.ad;
+    console.log(`Champion 1 hit Champion 2 com ${originAd} de ad`);
+    console.log(`Champion 2 tem ${target.baseStats.defensive.armor} de armor`);
+    var dmgWithReduction = +(origin.baseStats.offensive.ad - (origin.baseStats.offensive.ad * targetArmorEfficiency)).toFixed(2);
+    console.log(`Dano Total: ${dmgWithReduction}`);
+    console.log(`${target.baseStats.defensive.hp} - ${dmgWithReduction}`);
+    target.baseStats.defensive.hp -= dmgWithReduction;
+    console.log(`Champion 2 hp após o hit: ${target.baseStats.defensive.hp}`);
 
-  var targetArmorEfficiency = armorEfficiency(target.armor);
-
-  var dmgWithReduction = +(originAd - (originAd * targetArmorEfficiency)).toFixed(2);
-
-  console.log(`${originAd} - (${originAd} * ${targetArmorEfficiency}) = ${dmgWithReduction}`);
-
-  console.log(`${target.hp} - ${dmgWithReduction}`);
-
-  target.hp -= dmgWithReduction;
-
-  console.log(`Champion 2 hp após o hit: ${target.hp}`);
+  }
 }
+
 ```
-A função `actionHit` recebe dois parâmetros: `origin` e `target`, que representam os campeões envolvidos na ação de ataque. A função realiza o cálculo de dano com base nos atributos dos campeões e exibe informações relevantes no console.
-
-- `originAd` armazena o valor do atributo `ad` do campeão de origem.
-- É exibida no console uma mensagem inform
-
-ando o campeão de origem e seu valor de `ad`.
-- É exibida no console a quantidade de armadura (`armor`) do `target` (campeão alvo).
-- `targetArmorEfficiency` recebe o valor da eficiência da armadura do `target`, obtido chamando a função `armorEfficiency` passando o valor de `armor` do `target` como argumento.
-- `dmgWithReduction` calcula o dano reduzido aplicando a eficiência da armadura ao `originAd`. O resultado é arredondado para 2 casas decimais.
-- São exibidas no console as etapas do cálculo de dano.
-- O valor do dano reduzido é subtraído do atributo `hp` do `target`.
-- É exibido no console o valor atualizado do atributo `hp` do `target`.
 
 ```javascript
 actionHit(champion1, champion2);
