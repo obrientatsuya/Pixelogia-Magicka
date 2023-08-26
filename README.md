@@ -113,7 +113,7 @@ function Champion(params) {
 49-54. Dentro da habilidade `skill1`, são definidos os atributos relacionados à primeira habilidade do campeão. Esses atributos incluem `name` (nome da habilidade), `attributes` (atributos da habilidade, como área de efeito, custo e tempo de recarga) e `niveling` (atributos de nivelamento da habilidade). 
 -----------------------------
 
-# Armor Efficiency
+# Armor Efficiency e Mr Efficiency [Agora estão juntas em defenseEfficiency]
 ```javascript
 function armorEfficiency(armor) {
   let efficiency;
@@ -137,8 +137,6 @@ function armorEfficiency(armor) {
 }
 ```
 A função `armorEfficiency` recebe um valor de `armor` e calcula a eficiência da armadura com base nesse valor. Se o valor de `armor` for menor ou igual a 100, a eficiência é calculada como `armor / 2`. Caso contrário, a eficiência é calculada somando 100/2 com `armor / 33.33`. Em seguida, há verificações para limitar a eficiência dentro de um intervalo de -20 a 90. O resultado é dividido por 100 para obter a eficiência em forma de porcentagem e é exibido no console. Por fim, o valor da eficiência é retornado.
-
-# Veja também: [mrEfficiency](https://github.com/obrientatsuya/Eden-Engine/blob/main/mrEfficiency.md)
 
 # Função responsável pelo hit basico. [Atualizada]
 ```javascript
@@ -177,7 +175,7 @@ actionHit(champion1, champion2);
 ```
 Chama a função `actionHit` passando `champion1` como origem e `champion2` como alvo, simulando um ataque do `champion1` ao `champion2`.
 
-# Veja também: [Experience and Hp Regen](https://github.com/obrientatsuya/Eden-Engine/blob/main/experience.md)
+# Experience and Hp Regen [Desatualizada]
 ### Output:
 ```javascript
 Novo XP: 180
