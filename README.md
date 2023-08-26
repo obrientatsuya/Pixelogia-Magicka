@@ -1,6 +1,6 @@
 # Eden-Engine
 
-### Output:
+### Action Hit [0 crit]
 ```javascript
 O HP do Champion 2 é: 800
 Champion 1 hit Champion 2 com 120 de ad
@@ -10,28 +10,17 @@ Eficiência da armadura: 0.38
 800 - 74.4
 Champion 2 hp após o hit: 725.6
 ```
+### Action Hit [100 crit]
+```javascript
+Acerto Crítico!
+O HP do Champion 2 é: 1000
+Champion 1 hit Champion 2 com 962.50 de dano crítico
+Champion 2 tem 250 de armor
+Dano Total: 404.25
+Champion 2 hp após o hit: 595.75
+```
 
 # Start
-O objeto abaixo foi refatorado por conter muitos parametros ->
-
-```javascript
-function Champion(params) {
-  this.hp = params.hp || 0;
-  this.armor = params.armor || 0;
-  this.ad = params.ad || 0;
-  this.mr = params.mr || 0;
-  this.exp = params.exp || 0;
-  this.nivel = params.nivel || 0;
-  this.hpregen = {
-    value: params.hpregen || 0,
-    start: params.start || 0,
-    end: params.end || 0
-  };
-  this.maxhp = params.maxhp || 0;
-}
-
-```
-# para ->
 ```javascript
 function Champion(params) {
   this.baseStats = {
