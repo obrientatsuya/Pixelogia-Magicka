@@ -2,7 +2,7 @@
 The setup of project has in releases.
 
 ### Actual view.
-
+<img src="/preview gif.gif">
 
 ### Action Hit [0 crit]
 ```javascript
