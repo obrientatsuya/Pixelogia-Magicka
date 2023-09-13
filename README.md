@@ -1,7 +1,7 @@
 # Getting Started
 The setup of project has in releases.
 
-### Actual view. [Not in realtime, 10fps]
+### Actual view. [NOT IN REALTIME, LOW FPS]
 <img src="/preview gif.gif">
 
 ### Action Hit [0 crit]
