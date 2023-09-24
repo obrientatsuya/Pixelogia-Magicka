@@ -2,7 +2,7 @@
 The setup of project has in releases.
 
 ### Actual view. [NOT IN REALTIME]
-<img src="/preview gif.gif">
+<img src="/Unity_63rYLTO9lX.gif">
 
 ### Old view [BEFORE UPDATE]
 <img src="/preview gif.gif">
