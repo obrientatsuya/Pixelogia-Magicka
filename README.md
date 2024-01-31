@@ -1,6 +1,7 @@
 # Getting Started
-The setup of project has in releases.
+The game is now compiled; you can download the executable in the releases.
 
+For dev purposes the project setup is there too.
 ### After UI update.  [UI PROTOTYPE NO BLUR]
 <img src="/imagem_2024-01-31_023651734.png">
 
