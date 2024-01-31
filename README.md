@@ -1,10 +1,13 @@
 # Getting Started
 The setup of project has in releases.
 
-### Actual view. [NOT IN REALTIME]
+### After UI update.  [UI PROTOTYPE NO BLUR]
+<img src="/imagem_2024-01-31_023651734.png">
+
+### Actual video with no hud. [NOT IN REALTIME]
 <img src="/Unity_63rYLTO9lX.gif">
 
-### Old view [BEFORE UPDATE]
+### First. [BEFORE UPDATE]
 <img src="/preview gif.gif">
 
 ### Action Hit [0 crit]
